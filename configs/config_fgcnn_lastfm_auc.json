@@ -1,0 +1,46 @@
+{
+    "fairrec": {
+        "model_params": {
+            "model_name": "fgcnn",
+            "embedding_dim": 4,
+            "batch_size": 256,
+            "model_dir": "./model/"
+        },
+        "data_params": {
+            "dataset": "last-fm",
+            "data_dir": "./data/"
+        },
+        "test_info": {
+            "sensitive_features": ["gender", "age", "country"],
+            "metric": "auc",
+            "threshold": 0.001
+        }, 
+        "dpso_params": {
+            "epsilon": 0.005,
+            "iter": 20,
+            "v_low": -2, 
+            "v_high": 2
+        }
+    },
+    "sampling": {
+        "model_params": {
+            "model_name": "fgcnn",
+            "embedding_dim": 4,
+            "batch_size": 256,
+            "model_dir": "./model/"
+        },
+        "data_params": {
+            "dataset": "last-fm",
+            "data_dir": "./data/"
+        },
+        "test_info": {
+            "sensitive_features": ["gender", "age", "country"],
+            "metric": "auc",
+            "threshold": 0.001
+        },
+        "algorithm_params": {
+            "iter": 22,
+            "one_step_num": 5
+        }
+    }
+}
