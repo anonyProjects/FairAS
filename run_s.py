@@ -257,11 +257,38 @@ def one_step(test_info, sampling_prob_min, sampling_prob_max, sample_size, sampl
 
     return sampling_prob_min, sampling_prob_max
 
+def get_s_base(test_info):
+    count_freq = {}
+    for s in test_info['sensitive_features']:
+        count_freq[s] = feat_dict[s]
+
+    # Find the corresponding key with the smallest value in the dic
+    min_value = min(count_freq.values())
+    min_keys = [key for key, value in count_freq.items() if value == min_value]
+
+    if len(min_keys) == 1:
+        return min_keys[0]
+    else:
+        entropy_dic = {}
+        for k in min_keys:
+            value_counts = test_data[k].value_counts()
+            total_count = len(test_data)
+            entropy = 0
+
+            for count in value_counts:
+                probability = count / total_count
+                entropy -= probability * np.log2(probability)
+            entropy_dic[k] = entropy
+        s_base = min(entropy_dic, key=entropy_dic.get)
+
+    return s_base
 
 def initialize_filter(test_info, sampling_prob):
+    s_base = get_s_base(test_info)
+
     for s in test_info['sensitive_features']:
         sampling_prob[s] = []
-        if s == "gender" or s == "onehot_feat0":
+        if s == s_base:
             continue
         else:
             for i in range(feat_dict[s]):
@@ -276,7 +303,7 @@ def initialize_filter(test_info, sampling_prob):
 
     # Binary attribute filtering
     for s in test_info['sensitive_features']:
-        if s == "gender" or s == "onehot_feat0":
+        if s == s_base:
             for i in range(feat_dict[s]):
                 sampling_prob[s].append(1 / feat_dict[s])
 
@@ -364,7 +391,10 @@ if __name__ == '__main__':
 
         for k in range(algorithm_params['iter']):
             print("Round", k + 1, "sampling")
-            sampling_prob_min, sampling_prob_max = one_step(test_info, sampling_prob_min, sampling_prob_max,
+            if len(sampled_score) >= feat_dict['gourps_num']:
+                unfairness_list.append(unfairness_list[-1])
+            else:
+                sampling_prob_min, sampling_prob_max = one_step(test_info, sampling_prob_min, sampling_prob_max,
                                                             algorithm_params['one_step_num'] * (k + 1) * 2,
                                                             sampled_users,
                                                             sampled_score, sampled_users_str)
