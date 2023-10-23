@@ -109,7 +109,8 @@ def get_feat_dict(dataset):
                      'gender': 2,
                      'age': 7,
                      'occupation': 21,
-                     'zipcode': 3439}
+                     'zipcode': 3439,
+                     'groups_num': 150}
     if dataset == 'black-fri':
         feat_dict = {'user_id': 5891,
                      'item_id': 3631,
@@ -122,7 +123,8 @@ def get_feat_dict(dataset):
                      'cate': 20,
                      'subcate_1': 18,
                      'subcate_2': 16,
-                     'price': 23962}
+                     'price': 23962,
+                     'groups_num': 190}
     if dataset == 'last-fm':
         feat_dict = {'user_id': 267034,
                      'item_id': 145975,
@@ -130,7 +132,8 @@ def get_feat_dict(dataset):
                      'age': 111,
                      'country': 239,
                      'signup_date': 2254,
-                     'cate': 249841}
+                     'cate': 249841,
+                     'groups_num': 220}
     if dataset == 'amazon':
         feat_dict = {'user_id': 188657,
                      'item_id': 29391,
@@ -138,7 +141,8 @@ def get_feat_dict(dataset):
                      'cate': 3516,
                      "his_level": 10,
                      "mean_price_level": 10,
-                     "max_price_level": 10}
+                     "max_price_level": 10,
+                     'groups_num': 260}
     if dataset == 'kuai':
         feat_dict = {'user_id': 7176,
                      'item_id': 10728,
@@ -160,7 +164,8 @@ def get_feat_dict(dataset):
                      'onehot_feat14': 3,
                      'onehot_feat15': 3,
                      'onehot_feat16': 3,
-                     'onehot_feat17': 3}
+                     'onehot_feat17': 3,
+                     'groups_num': 90}
     if dataset == 'reasoner':
         feat_dict = {'user_id': 2997,
                      'item_id': 4672,
@@ -170,7 +175,8 @@ def get_feat_dict(dataset):
                      'education': 8,
                      'career': 21,
                      'income': 5,
-                     'address': 31}
+                     'address': 31,
+                     'groups_num': 130}
     return feat_dict
 
 
