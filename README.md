@@ -20,4 +20,6 @@ python run_s.py --config=./configs/config_deepfm_lastfm_auc.json
 #### Results
 Also, we put the raw data results for all experiments in `AllResult`.
 
-#### Datasets and pre-trained models
+#### Data
+The datasets used in the paper can be downloaded from the following link.
+The deep recommendation models tested are all provided by DeepCTR. https://github.com/shenweichen/deepctr.
