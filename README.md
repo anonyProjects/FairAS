@@ -1,8 +1,8 @@
-# An Accelerated Sampling-Based Approach for Fairness Testing of Deep Recommender Systems
-This is the homepage of **$S^3$** including `tool implementation` and `experiment results`.
+# No Bias Left Behind: Fairness Testing for Deep Recommender Systems Targeting General Disadvantaged Groups
+This is the homepage of **FairAS** including `tool implementation` and `experiment results`.
 
 #### Environment configuration
-Before running $S^3$, please make sure you have installed various related packages, including numpy, pandas, tensorflow, sklearn and deepctr.
+Before running $FairAS$, please make sure you have installed various related packages, including numpy, pandas, tensorflow, sklearn and deepctr.
 
 You can install deepctr with the following command：
 
@@ -11,7 +11,7 @@ pip install deepctr
 ```
 
 #### Running
-Please use the following command to execute $S^3$:
+Please use the following command to execute $FairAS$:
 
 ```shell
 python run_s.py --config=./configs/config_deepfm_lastfm_auc.json
